@@ -1,4 +1,5 @@
 // jQuery.dynItem, (c) 2012 Juliusz Gonera, MIT License
+// https://github.com/jgonera/jquery.dynitem
 
 (function($) {
   "use strict";
