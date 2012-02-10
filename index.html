@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>jQuery.dynItem</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script src="jquery.dynitem.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#add').dynItem('<li>Item $n$ <button class="remove">Remove</button></li>', {
+          parent: '#items'
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="add">Add</button>
+    
+    <ul id="items"></ul>
+  </body>
+</html>

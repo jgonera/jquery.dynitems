@@ -1,0 +1,26 @@
+// jQuery.dynItem, (c) 2012 Juliusz Gonera, MIT License
+
+(function($) {
+  "use strict";
+
+  $.fn.dynItem = function(template, options) {
+    var o = $.extend({
+      removeButton: '.remove',
+      pattern: '$n$',
+      n: 0
+    }, options);
+    var n = o.n;
+    
+	  this.click(function() {
+	    var html = template.replace(o.pattern, n);
+	    var item = $(html);
+	    item.appendTo(o.parent);
+	    item.find(o.removeButton).click(function() {
+	      item.remove();
+	    });
+	    ++n;
+	  });
+  };
+	
+}(jQuery));
+
