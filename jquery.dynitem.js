@@ -11,16 +11,16 @@
     }, options);
     var n = o.n;
     
-	  this.click(function() {
-	    var html = template.replace(o.pattern, n);
-	    var item = $(html);
-	    item.appendTo(o.parent);
-	    item.find(o.removeButton).click(function() {
-	      item.remove();
-	    });
-	    ++n;
-	  });
+    this.click(function() {
+      var html = template.replace(o.pattern, n);
+      var item = $(html);
+      item.appendTo(o.parent);
+      item.find(o.removeButton).click(function() {
+        item.remove();
+      });
+      ++n;
+    });
   };
-	
+
 }(jQuery));
 
