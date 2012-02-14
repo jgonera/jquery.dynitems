@@ -18,8 +18,10 @@
       item.appendTo(o.parent);
       item.find(o.removeButton).click(function() {
         item.remove();
+        return false;
       });
       ++n;
+      return false;
     });
   };
 
