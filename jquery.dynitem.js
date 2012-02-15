@@ -7,7 +7,7 @@
   $.fn.dynItem = function(template, options) {
     var o = $.extend({
       removeButton: '.remove',
-      pattern: '$n$',
+      pattern: /\$n\$/g,
       n: 0
     }, options);
     var n = o.n;

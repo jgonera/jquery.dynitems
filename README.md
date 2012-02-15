@@ -14,7 +14,7 @@ To add a new item each time `#somebutton` is clicked use:
         parent: '#items',        // parent element
         removeButton: '.begone', // the element that removes the new item (default '.remove')
         n: 1,                    // start value of the counter (default: 0)
-        pattern: '#',            // what will get replaced with counter value
+        pattern: /#/g,           // what will get replaced with counter value (default: $n$)
     });
 ```
 
