@@ -4,16 +4,17 @@
 (function($) {
   "use strict";
 
-  $.fn.dynItem = function(template, options) {
+  $.fn.dynItem = function(options) {
     var o = $.extend({
+      parent: 'body',
       removeButton: '.remove',
-      pattern: /\$n\$/g,
       n: 0
     }, options);
     var n = o.n;
     
-    this.click(function() {
-      var html = template.replace(o.pattern, n);
+    function addItem(data) {
+      data = data || {};
+      var html = o.template($.extend(data, { n: n }));
       var item = $(html);
       item.appendTo(o.parent);
       item.find(o.removeButton).click(function() {
@@ -22,8 +23,10 @@
       });
       ++n;
       return false;
-    });
-  };
+    }
 
+    this.click(addItem);
+    $.each(o.items, function(i, data) { addItem(data); });
+  };
 }(jQuery));
 

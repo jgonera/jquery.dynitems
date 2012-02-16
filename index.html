@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <title>jQuery.dynItem</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script src="http://documentcloud.github.com/underscore/underscore.js"></script>
     <script src="jquery.dynitem.js"></script>
     <script>
       $(document).ready(function() {
-        $('#add').dynItem('<li>Item $n$ <button class="remove">Remove</button></li>', {
+        $('#add').dynItem({
+          template: _.template($('#template').html()),
+          items: [
+            { name: 'Banana' }, { name: 'Cake' }
+          ],
           parent: '#items'
         });
       });
     </script>
+    <script id="template" type="text/x-template">
+      <li><%= name || 'Item' %> <%= n %> <button class="remove">Remove</button></li>
+    </script>
   </head>
   <body>
     <button id="add">Add</button>
-    
     <ul id="items"></ul>
   </body>
 </html>
