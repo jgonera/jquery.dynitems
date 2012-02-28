@@ -16,7 +16,7 @@ To add a new item each time `#somebutton` is clicked use:
             var template = '<li>Item # <button class="begone">Remove</button></li>';
             return template.replace(/#/g, data.n).replace(/name/g, data.name || 'Item');
         },
-        // existing (preadded) items
+        // existing (predefined) items
         items: [{ name: 'Banana' }, { name: 'Cake' }],
         // parent element
         parent: '#items',

@@ -6,6 +6,7 @@
 
   $.fn.dynItem = function(options) {
     var o = $.extend({
+      items: [],
       parent: 'body',
       removeButton: '.remove',
       n: 0
