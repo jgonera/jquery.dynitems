@@ -2,27 +2,33 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>jQuery.dynItem</title>
+    <title>jQuery.dynItems</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
     <script src="http://documentcloud.github.com/underscore/underscore.js"></script>
-    <script src="jquery.dynitem.js"></script>
+    <script src="jquery.dynitems.js"></script>
     <script>
       $(document).ready(function() {
-        $('#add').dynItem({
+        var items = $('#items').dynItems({
           template: _.template($('#template').html()),
-          items: [
-            { name: 'Banana' }, { name: 'Cake' }
-          ],
-          parent: '#items'
+          defaultData: { name: 'Item' },
+          items: [{ name: 'Banana' }, { name: 'Cake' }]
+        });
+
+        $('#add').click(items.addItem);
+        $('#callbackAdd').click(function() {
+          items.addItem({ name: 'Callback item' }, function(item) {
+            alert(item.find('span').text() + ' has been added');
+          });
         });
       });
     </script>
     <script id="template" type="text/x-template">
-      <li><%= name || 'Item' %> <%= n %> <button class="remove">Remove</button></li>
+      <li><span><%= name %> <%= n %></span> <button class="remove">Remove</button></li>
     </script>
   </head>
   <body>
     <button id="add">Add</button>
+    <button id="callbackAdd">Callback add</button>
     <ul id="items"></ul>
   </body>
 </html>
