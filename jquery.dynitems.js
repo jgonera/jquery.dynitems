@@ -15,8 +15,8 @@
     var n = o.n;
     
     function addItem(data, callback) {
-      data = $.extend({}, o.defaultData, data, { n: n });
-      var html = o.template(data);
+      var templateData = $.extend({}, o.defaultData, data, { n: n });
+      var html = o.template(templateData);
       var item = $(html);
       item.appendTo(element);
       item.find(o.removeButton).click(function() {
@@ -25,6 +25,7 @@
       });
       ++n;
       if (callback) callback(item);
+      if (data instanceof $.Event) data.preventDefault();
     }
 
     $.each(o.items, function(i, data) { addItem(data); });
