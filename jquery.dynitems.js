@@ -15,6 +15,10 @@
     var n = o.n;
     
     function addItem(data, callback) {
+      if (data instanceof $.Event) {
+        data.preventDefault();
+        data = {};
+      }
       var templateData = $.extend({}, o.defaultData, data, { n: n });
       var html = o.template(templateData);
       var item = $(html);
@@ -25,7 +29,6 @@
       });
       ++n;
       if (callback) callback(item);
-      if (data instanceof $.Event) data.preventDefault();
     }
 
     $.each(o.items, function(i, data) { addItem(data); });
