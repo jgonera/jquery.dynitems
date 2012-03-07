@@ -23,6 +23,7 @@
       var html = o.template(templateData);
       var item = $(html);
       item.appendTo(element);
+      element.show();
       item.find(o.removeButton).click(function() {
         item.remove();
         return false;
