@@ -22,17 +22,20 @@
         callback = data;
         data = {};
       }
+
       var templateData = $.extend({}, o.defaultData, data, { n: n });
       var html = o.template(templateData);
       var item = $(html);
       item.appendTo(element);
       element.show();
-      item.find(o.removeButton).click(function() {
+      item.find(o.removeButton).click(function(e) {
+        e.preventDefault();
         item.remove();
-        return false;
       });
+
       ++n;
       if (callback) callback(item);
+      return item;
     }
 
     $.each(o.items, function(i, data) { addItem(data); });
