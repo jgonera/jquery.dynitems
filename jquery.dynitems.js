@@ -18,6 +18,9 @@
       if (data instanceof $.Event) {
         data.preventDefault();
         data = {};
+      } else if (data instanceof Function) {
+        callback = data;
+        data = {};
       }
       var templateData = $.extend({}, o.defaultData, data, { n: n });
       var html = o.template(templateData);
